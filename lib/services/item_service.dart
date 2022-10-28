@@ -35,7 +35,7 @@ class ItemService {
     var emailCred =
         Credentials.emailPassword('leozeferino@gmail.com', '12345678');
     try {
-      User currentUser = await app.logIn(emailCred);
+      User currentUser = app.currentUser ?? await app.logIn(emailCred);
 
       _realm = Realm(
         Configuration.flexibleSync(

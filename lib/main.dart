@@ -8,10 +8,6 @@ const String _appId = 'coffeely-app-1-iuuyu';
 final AppConfiguration _appConfig = AppConfiguration(_appId);
 final App app = App(_appConfig);
 
-Future<void> init(BuildContext context) async {
-  await Realm realm.
-}
-
 void main() {
   final ItemService service = ItemService();
   runApp(MyApp(
@@ -26,19 +22,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: init(context),
-      builder: MaterialApp(
-        title: 'Shopping List',
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-        ),
-        home: MyHomePage(
-          title: 'Shopping List',
-          service: service,
-        ),
-        debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      title: 'Shopping List',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
       ),
+      home: MyHomePage(
+        title: 'Shopping List',
+        service: service,
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

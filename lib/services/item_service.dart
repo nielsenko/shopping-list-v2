@@ -11,9 +11,11 @@ class ItemService {
   //Realm? _realm;
   //final _realm;
 
+  /// You must await this future to ensure ItemService is ready to use
+  /// before calling any of its methods.
+  late final Future<void> init;
   ItemService() {
-    openRealm();
-    //loginRealm(app, 'leozeferino@gmail.com', '12345678');
+    init = openRealm();
   }
 
   /* Future<User> loginRealm(App app, String email, String password) async {
@@ -29,7 +31,7 @@ class ItemService {
     return currentUser;
   }*/
 
-  openRealm() async {
+  Future<void> openRealm() async {
     var emailCred =
         Credentials.emailPassword('leozeferino@gmail.com', '12345678');
     try {

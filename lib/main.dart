@@ -8,8 +8,9 @@ const String _appId = 'coffeely-app-1-iuuyu';
 final AppConfiguration _appConfig = AppConfiguration(_appId);
 final App app = App(_appConfig);
 
-void main() {
+Future<void> main() async {
   final ItemService service = ItemService();
+  await service.init;
   runApp(MyApp(
     service: service,
   ));
